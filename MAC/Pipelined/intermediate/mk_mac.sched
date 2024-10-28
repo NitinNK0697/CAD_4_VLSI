@@ -1,0 +1,212 @@
+=== Generated schedule for mk_mac ===
+
+Method schedule
+---------------
+Method: put_inp_A
+Ready signal: True
+Conflict-free: put_inp_B, put_inp_C, put_inp_sel
+Sequenced before (restricted): put_inp_A
+Sequenced after (restricted): get_mac_op
+ 
+Method: put_inp_B
+Ready signal: True
+Conflict-free: put_inp_A, put_inp_C, put_inp_sel
+Sequenced before (restricted): put_inp_B
+Sequenced after (restricted): get_mac_op
+ 
+Method: put_inp_C
+Ready signal: True
+Conflict-free: put_inp_A, put_inp_B, put_inp_sel
+Sequenced before (restricted): put_inp_C
+Sequenced after (restricted): get_mac_op
+ 
+Method: put_inp_sel
+Ready signal: True
+Conflict-free: put_inp_A, put_inp_B, put_inp_C
+Sequenced before (restricted): put_inp_sel
+Sequenced after (restricted): get_mac_op
+ 
+Method: get_mac_op
+Ready signal: True
+Conflict-free: get_mac_op
+Sequenced before (restricted): put_inp_A, put_inp_B, put_inp_C, put_inp_sel
+ 
+Rule schedule
+-------------
+Rule: bfloat_rg_s1_valid__dreg_update
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: bfloat_rg_s2_valid__dreg_update
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: bfloat_rg_s3_valid__dreg_update
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: bfloat_rg_s4_valid__dreg_update
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: bfloat_rg_s5_valid__dreg_update
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: bfloat_rg_s6_valid__dreg_update
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: bfloat_rg_s7_valid__dreg_update
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: bfloat_rg_s8_valid__dreg_update
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: bfloat_rg_s9_valid__dreg_update
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: bfloat_rg_s10_valid__dreg_update
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: bfloat_rg_out_valid__dreg_update
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: bfloat_obj_unsignedmult_rg_s1_val__dreg_update
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: bfloat_obj_unsignedmult_rg_s2_val__dreg_update
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: bfloat_obj_unsignedmult_rg_s3_val__dreg_update
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: bfloat_obj_unsignedmult_rg_s4_val__dreg_update
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: bfloat_obj_unsignedmult_rg_s5_val__dreg_update
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: bfloat_obj_unsignedmult_s1
+Predicate: bfloat_obj_unsignedmult_rg_s1_val
+Blocking rules: (none)
+ 
+Rule: bfloat_obj_unsignedmult_s2
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: bfloat_obj_unsignedmult_s3
+Predicate: bfloat_obj_unsignedmult_rg_s3_val
+Blocking rules: (none)
+ 
+Rule: bfloat_obj_unsignedmult_s4
+Predicate: bfloat_obj_unsignedmult_rg_s4_val
+Blocking rules: (none)
+ 
+Rule: bfloat_stage1
+Predicate: bfloat_rg_s1_valid
+Blocking rules: (none)
+ 
+Rule: bfloat_stage2
+Predicate: bfloat_rg_s2_valid
+Blocking rules: (none)
+ 
+Rule: bfloat_stage3
+Predicate: bfloat_rg_s3_valid
+Blocking rules: (none)
+ 
+Rule: bfloat_stage4
+Predicate: bfloat_rg_s4_valid
+Blocking rules: (none)
+ 
+Rule: bfloat_stage5
+Predicate: bfloat_rg_s5_valid
+Blocking rules: (none)
+ 
+Rule: bfloat_stage6
+Predicate: bfloat_rg_s6_valid
+Blocking rules: (none)
+ 
+Rule: bfloat_stage7
+Predicate: bfloat_rg_s7_valid
+Blocking rules: (none)
+ 
+Rule: bfloat_stage8
+Predicate: bfloat_rg_s8_valid
+Blocking rules: (none)
+ 
+Rule: bfloat_stage9
+Predicate: bfloat_rg_s9_valid
+Blocking rules: (none)
+ 
+Rule: bfloat_stage10
+Predicate: bfloat_rg_s10_valid
+Blocking rules: (none)
+ 
+Rule: int_8_multiply
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: int_8_add
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: inp
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: out
+Predicate: True
+Blocking rules: (none)
+ 
+Logical execution order: get_mac_op,
+			 out,
+			 bfloat_stage10,
+			 bfloat_stage9,
+			 bfloat_stage8,
+			 bfloat_stage7,
+			 bfloat_stage6,
+			 bfloat_stage5,
+			 bfloat_stage4,
+			 bfloat_stage3,
+			 bfloat_stage2,
+			 bfloat_stage1,
+			 bfloat_rg_s2_valid__dreg_update,
+			 bfloat_rg_s3_valid__dreg_update,
+			 bfloat_rg_s4_valid__dreg_update,
+			 bfloat_rg_s5_valid__dreg_update,
+			 bfloat_rg_s6_valid__dreg_update,
+			 bfloat_rg_s7_valid__dreg_update,
+			 bfloat_rg_s8_valid__dreg_update,
+			 bfloat_rg_s9_valid__dreg_update,
+			 bfloat_rg_s10_valid__dreg_update,
+			 bfloat_rg_out_valid__dreg_update,
+			 bfloat_obj_unsignedmult_s4,
+			 bfloat_obj_unsignedmult_s3,
+			 bfloat_obj_unsignedmult_s2,
+			 bfloat_obj_unsignedmult_s1,
+			 bfloat_obj_unsignedmult_rg_s2_val__dreg_update,
+			 bfloat_obj_unsignedmult_rg_s3_val__dreg_update,
+			 bfloat_obj_unsignedmult_rg_s4_val__dreg_update,
+			 bfloat_obj_unsignedmult_rg_s5_val__dreg_update,
+			 int_8_add,
+			 int_8_multiply,
+			 inp,
+			 put_inp_A,
+			 put_inp_B,
+			 put_inp_C,
+			 put_inp_sel,
+			 bfloat_rg_s1_valid__dreg_update,
+			 bfloat_obj_unsignedmult_rg_s1_val__dreg_update
+
+======================================

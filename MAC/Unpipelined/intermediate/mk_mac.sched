@@ -1,0 +1,62 @@
+=== Generated schedule for mk_mac ===
+
+Method schedule
+---------------
+Method: put_inp_A
+Ready signal: True
+Conflict-free: put_inp_B, put_inp_C, put_inp_sel
+Sequenced before (restricted): put_inp_A
+Sequenced after (restricted): get_mac_op
+ 
+Method: put_inp_B
+Ready signal: True
+Conflict-free: put_inp_A, put_inp_C, put_inp_sel
+Sequenced before (restricted): put_inp_B
+Sequenced after (restricted): get_mac_op
+ 
+Method: put_inp_C
+Ready signal: True
+Conflict-free: put_inp_A, put_inp_B, put_inp_sel
+Sequenced before (restricted): put_inp_C
+Sequenced after (restricted): get_mac_op
+ 
+Method: put_inp_sel
+Ready signal: True
+Conflict-free: put_inp_A, put_inp_B, put_inp_C
+Sequenced before (restricted): put_inp_sel
+Sequenced after (restricted): get_mac_op
+ 
+Method: get_mac_op
+Ready signal: True
+Conflict-free: get_mac_op
+Sequenced before (restricted): put_inp_A, put_inp_B, put_inp_C, put_inp_sel
+ 
+Rule schedule
+-------------
+Rule: bfloat_mac
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: int_8_r1
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: inp
+Predicate: True
+Blocking rules: (none)
+ 
+Rule: out
+Predicate: True
+Blocking rules: (none)
+ 
+Logical execution order: get_mac_op,
+			 out,
+			 bfloat_mac,
+			 int_8_r1,
+			 inp,
+			 put_inp_A,
+			 put_inp_B,
+			 put_inp_C,
+			 put_inp_sel
+
+======================================
