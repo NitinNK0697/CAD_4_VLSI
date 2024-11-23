@@ -17,25 +17,27 @@ FLOAT32_MIN = -3.4e38
 # @mac_coverage
 def MAC_model(a_int,b_int,c_int,sel):
     if (sel==0b1):
-        a=signed_binary_to_int(format(a_int,'016b')[8:])
-        b=signed_binary_to_int(format(b_int,'016b')[8:])
+        a=signed_binary_to_int(format(a_int & 0xffff, '016b')[8:])
+        b=signed_binary_to_int(format(b_int & 0xffff, '016b')[8:])
         c=signed_binary_to_int(format(c_int,'032b'))
         mac_int=(a*b)+c
 
         return int_to_signed_binary(mac_int,32)
 
     elif (sel==0b0):
-        a_bf16=binary_to_bfloat16(format(a_int,'016b'))
-        b_bf16=binary_to_bfloat16(format(b_int,'016b'))
+        a_bf16=binary_to_bfloat16(format(a_int & 0xffff,'016b'))
+        b_bf16=binary_to_bfloat16(format(b_int & 0xffff,'016b'))
         c_fp32=binary_to_float32(format(c_int,'032b'))
+
+        # print("A;=",a_bf16,"B=",b_bf16,"C=",c_fp32)
 
         # print("a_bfloat",bfloat16_to_binary(a_bf16), "c_bfloat",float32_to_binary(c_fp32))
         
 
 
         # Multiply and round to bfloat16
-        product = tf.cast(a_bf16 * b_bf16, dtype=tf.bfloat16).numpy()
-
+        product = tf.cast(a_bf16 * b_bf16, dtype=tf.float32).numpy()
+        # print("product",product)
         # Convert to float32
         product_fp32 = tf.cast(product, dtype=tf.float32)
 
@@ -47,6 +49,7 @@ def MAC_model(a_int,b_int,c_int,sel):
 
         # Round the result to float32
         mac_result_rounded = tf.cast(mac_result, dtype=tf.float32).numpy()
+        # print("MAC result=",mac_result_rounded)
 
         # Convert the result to 32-bit binary string
         mac_result_binary = float32_to_binary(mac_result_rounded)
@@ -123,5 +126,19 @@ def float32_to_binary(float32_value):
 ##########################################################################################
 
 
+def generate_bfloat16_int():
+    while True:
+        val=np.random.uniform(-65504, 65504)
+        bfloat16_val=np.float32(val).astype(np.float16)
+        if np.isfinite(bfloat16_val) and not np.isclose(bfloat16_val,0):
+            bfloat16_bits=struct.unpack('>H',struct.pack('>e',bfloat16_val))[0]
+            return bfloat16_bits
 
+def generate_float32_int():
+    while True:
+        val=np.random.uniform(-1e+10,1e+10)
+        float32_val=np.float32(val)
+        if np.isfinite(float32_val) and not np.isclose(float32_val,0):
+            float32_bits=struct.unpack('>I',struct.pack('>f',float32_val))[0]
+            return float32_bits
 
