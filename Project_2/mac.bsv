@@ -1,8 +1,13 @@
+/****Modified Mac Module for Systolic Array Implementation******
+Contributers: Nitin Kumar Prajapati, Sornali Sarkar
+*/
+
 package mac;
 
 import FloatingPoint::*;
 import DReg::*;
 
+//Top Module Interface
 interface Ifc_MAC;
    
     method Action       put_inp_A(Bit#(16) a);
@@ -20,16 +25,19 @@ interface Ifc_MAC;
     
 endinterface
 
+//Int8 MAC Interface
 interface Ifc_int8;
         method Action       put(Bit#(8) a, Bit#(8) b, Bit#(32) c);
         method Bit#(32)     get_out();       
 endinterface
 
-interface Ifc_bfloat16_mult;
+//BFloat MAC Interface
+interface Ifc_bfloat16_mac;
     method Bit#(32)     get_out();
     method Action       put(Bit#(16) a, Bit#(16) b, Bit#(32) c);
 endinterface
 
+//Submodule Interface
 interface Ifc_lzcounter;
     method    Bit#(5) get(Bit#(26) mantissa);
 endinterface
@@ -60,7 +68,7 @@ module mk_mac(Ifc_MAC);
     Reg#(Bit#(10)) count <- mkReg(0);
     
     
-    Ifc_bfloat16_mult bfloat        <-  mkBfloat16_mult;
+    Ifc_bfloat16_mac  bfloat        <-  mkBfloat16_mac;
     Ifc_int8          int_8         <-  mk_int8_mac;
   
   (*descending_urgency="mac_inp,mac_out"*)
@@ -86,20 +94,6 @@ module mk_mac(Ifc_MAC);
         rg_A2  <= rg_A1;
         rg_B2  <= rg_B1;
     endrule
-    
-
-   /* rule stall2;
-        rg_sel3 <= rg_sel2;
-        rg_A3  <= rg_A2;
-        rg_B3  <= rg_B2;
-    endrule
-
-    rule stall3;
-        rg_sel4 <= rg_sel3;
-        rg_A4  <= rg_A3;
-        rg_B4  <= rg_B3;
-    endrule
-    */
 
     rule mac_out;
         if(rg_sel1==1)
@@ -183,11 +177,8 @@ endmodule
 
 
 
-//BFloat16 Multiplier Module:
-
-
-
-module mkBfloat16_mult(Ifc_bfloat16_mult);
+//BFloat16 MAC Module:
+module mkBfloat16_mac(Ifc_bfloat16_mac);
 
     Reg#(Bit#(16))      rg_A        <-    mkReg(?);     //rg_A, rg_B --> BFloat16 
     Reg#(Bit#(16))      rg_B        <-    mkReg(?);     
