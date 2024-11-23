@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1732272865" />
+    <testcase name="test_arr" classname="test_systolic_array" file="/home/shakti/Desktop/Project_2/arr_verif/test_systolic_array.py" lineno="13" time="0.07562661170959473" sim_time_ns="57.001" ratio_time="753.7161683096838" />
+  </testsuite>
+</testsuites>
