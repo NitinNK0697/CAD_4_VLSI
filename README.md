@@ -10,8 +10,8 @@ Unpipelined Design
 2. Inside this folder open terminal, execute following command
 3. pyenv activate py38
 4. Verilog is already generated for the project, if you want to generate it again, execute below commands else skip to step 5:
-  make clean_build
-  make generate_verilog
+  -> make clean_build
+  -> make generate_verilog
 5. For running testbench, execute:
   make simulate
 6. by default this will launch the testbench and check for the testcases given to us to test our design. We can check both int8 and bfloat16 MAC functionality, by changing mode in the test.py file.
