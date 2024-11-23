@@ -1,4 +1,5 @@
-
+/*Systolic Array Module
+Contributors: Sornali Sarkar and Nitin Kumar Prajapati*/
 package sys_arr;
 
     import mac::*;
