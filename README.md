@@ -39,6 +39,7 @@ In addition to this we can also check the functionality for randomly generated i
 
 
 ################################ Project 2 ######################################
+
 For project to "Project_2" folder.
 Inside this folder sys_arr.bsv contains the bsv design for the systolic array
 1. Open Terminal
