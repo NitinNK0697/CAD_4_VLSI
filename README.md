@@ -62,5 +62,6 @@ a) Pipelined design: Code:Completed , Verification:Not completed (Coverage part 
 b) unpipelined design: Code:Completed , Verification:Not completed (Coverage part not done)
 
 Assignment 2:
+
 int8: code:Completed, Verification:Not complete (Coverage part not done)
 bfloat16: code:Completed, Verification:Not complete (Coverage part not done)
