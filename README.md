@@ -50,3 +50,17 @@ Inside this folder sys_arr.bsv contains the bsv design for the systolic array
 5. Go to "Project_2/arr_verif/" and open test_systolic_array.py and at line 24 change the mode and again go to step 2.
    Mode=0 for bfloat16
    Mode=1 for int8
+
+
+Assignment 1:
+1) int8
+a) Pipelined design: Code:Completed , Verification:Not completed (Coverage part not done)
+b) unpipelined design: Code:Completed , Verification:Not completed (Coverage part not done)
+
+2) bfloat16
+a) Pipelined design: Code:Completed , Verification:Not completed (Coverage part not done)
+b) unpipelined design: Code:Completed , Verification:Not completed (Coverage part not done)
+
+Assignment 2:
+int8: code:Completed, Verification:Not complete (Coverage part not done)
+bfloat16: code:Completed, Verification:Not complete (Coverage part not done)
